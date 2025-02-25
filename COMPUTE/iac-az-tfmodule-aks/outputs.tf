@@ -1,23 +1,10 @@
-output "aks_api_url" {
-  value = azurerm_kubernetes_cluster.aks.kube_config.0.host
+output "kube_config" {
+  value = azurerm_kubernetes_cluster.aks.kube_config.0.config
+  description = "Configuración de Kubernetes (kubeconfig)"
+  sensitive = true # Marca kubeconfig como sensible
 }
 
-output "aks_node_resource_group" {
-  value = azurerm_kubernetes_cluster.aks.node_resource_group
-}
-
-output "aks_oidc_issuer_url" {
-  value = azurerm_kubernetes_cluster.aks.oidc_issuer_url
-}
-
-output "aks_identity_properties" {
-  value = azurerm_kubernetes_cluster.aks.kubelet_identity[0]
-}
-
-output "law_id" {
-  value = azurerm_log_analytics_workspace.law.id
-}
-
-output "aks_id" {
-  value = azurerm_kubernetes_cluster.aks.id
+output "cluster_name" {
+  value = azurerm_kubernetes_cluster.aks.name
+  description = "Nombre del clúster AKS"
 }
